@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	var filename = flag.String("file", "input.txt", "file to analyze")
+	filename := flag.String("file", "input.txt", "file to analyze")
 	flag.Parse()
 
 	file, err := os.Open(*filename)
@@ -27,7 +27,7 @@ func main() {
 			log.Fatal(err)
 		}
 		for _, oldExpense := range output {
-			if oldExpense + expense == 2020 {
+			if oldExpense+expense == 2020 {
 				total := oldExpense * expense
 				fmt.Printf("Result first quest: %d\n", total)
 			}
@@ -35,14 +35,12 @@ func main() {
 
 		for i, oldestExpense := range output {
 			for _, olderExpense := range output[0:i] {
-				if oldestExpense + olderExpense + expense == 2020 {
+				if oldestExpense+olderExpense+expense == 2020 {
 					total := olderExpense * oldestExpense * expense
 					fmt.Printf("Result second quest: %d\n", total)
 				}
 			}
 		}
-
-
 
 		output = append(output, expense)
 	}
